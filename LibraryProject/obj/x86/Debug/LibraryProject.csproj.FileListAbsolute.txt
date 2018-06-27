@@ -1,0 +1,5 @@
+D:\CourseWorkDB\LibraryProject\obj\x86\Debug\LibraryProject.csprojAssemblyReference.cache
+D:\CourseWorkDB\LibraryProject\obj\x86\Debug\LibraryProject.MainForm.resources
+D:\CourseWorkDB\LibraryProject\obj\x86\Debug\LibraryProject.Properties.Resources.resources
+D:\CourseWorkDB\LibraryProject\obj\x86\Debug\LibraryProject.csproj.GenerateResource.cache
+D:\CourseWorkDB\LibraryProject\obj\x86\Debug\LibraryProject.csproj.CoreCompileInputs.cache

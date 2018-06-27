@@ -109,5 +109,22 @@ namespace LibraryProject.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT *
+        ///FROM (
+        ///    SELECT JOURNAL.BOOK_ID, BOOKS.NAME, COUNT(*) as cnt 
+        ///    FROM JOURNAL
+        ///    INNER JOIN BOOKS
+        ///        ON JOURNAL.BOOK_ID = BOOKS.ID
+        ///    GROUP BY JOURNAL.BOOK_ID,BOOKS.NAME
+        ///    ORDER BY cnt DESC
+        ///)WHERE ROWNUM &lt;= 3;.
+        /// </summary>
+        internal static string Top3 {
+            get {
+                return ResourceManager.GetString("Top3", resourceCulture);
+            }
+        }
     }
 }

@@ -44,9 +44,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.ClientID_textBox = new System.Windows.Forms.TextBox();
             this.ClientCount_button = new System.Windows.Forms.Button();
             this.BigFine_groupBox = new System.Windows.Forms.GroupBox();
+            this.Maxfine_textBox = new System.Windows.Forms.TextBox();
             this.BigFine_button = new System.Windows.Forms.Button();
             this.PopBooks_groupBox = new System.Windows.Forms.GroupBox();
             this.TopBook_button = new System.Windows.Forms.Button();
@@ -56,6 +57,10 @@
             this.ClrJournal_button = new System.Windows.Forms.Button();
             this.ListJoural_button = new System.Windows.Forms.Button();
             this.AddJournal_button = new System.Windows.Forms.Button();
+            this.ClientIDFine_textBox = new System.Windows.Forms.TextBox();
+            this.ClientIDCount_textBox = new System.Windows.Forms.TextBox();
+            this.BigFineClear_button = new System.Windows.Forms.Button();
+            this.ClientIDClear_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWork)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryDataSetBindingSource)).BeginInit();
@@ -79,7 +84,7 @@
             // Clients_button
             // 
             this.Clients_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Clients_button.Location = new System.Drawing.Point(930, 242);
+            this.Clients_button.Location = new System.Drawing.Point(930, 377);
             this.Clients_button.Name = "Clients_button";
             this.Clients_button.Size = new System.Drawing.Size(154, 49);
             this.Clients_button.TabIndex = 1;
@@ -90,7 +95,7 @@
             // Books_button
             // 
             this.Books_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Books_button.Location = new System.Drawing.Point(930, 326);
+            this.Books_button.Location = new System.Drawing.Point(930, 461);
             this.Books_button.Name = "Books_button";
             this.Books_button.Size = new System.Drawing.Size(154, 49);
             this.Books_button.TabIndex = 2;
@@ -101,7 +106,7 @@
             // BookTypes_button
             // 
             this.BookTypes_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BookTypes_button.Location = new System.Drawing.Point(930, 410);
+            this.BookTypes_button.Location = new System.Drawing.Point(930, 545);
             this.BookTypes_button.Name = "BookTypes_button";
             this.BookTypes_button.Size = new System.Drawing.Size(154, 49);
             this.BookTypes_button.TabIndex = 3;
@@ -155,22 +160,25 @@
             // 
             // SpecificClient_groupBox
             // 
+            this.SpecificClient_groupBox.Controls.Add(this.ClientIDClear_button);
+            this.SpecificClient_groupBox.Controls.Add(this.ClientIDCount_textBox);
+            this.SpecificClient_groupBox.Controls.Add(this.ClientIDFine_textBox);
             this.SpecificClient_groupBox.Controls.Add(this.ClientFine_button);
             this.SpecificClient_groupBox.Controls.Add(this.label4);
             this.SpecificClient_groupBox.Controls.Add(this.label3);
             this.SpecificClient_groupBox.Controls.Add(this.label1);
-            this.SpecificClient_groupBox.Controls.Add(this.textBox1);
+            this.SpecificClient_groupBox.Controls.Add(this.ClientID_textBox);
             this.SpecificClient_groupBox.Controls.Add(this.ClientCount_button);
             this.SpecificClient_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SpecificClient_groupBox.Location = new System.Drawing.Point(851, 26);
             this.SpecificClient_groupBox.Name = "SpecificClient_groupBox";
-            this.SpecificClient_groupBox.Size = new System.Drawing.Size(233, 194);
+            this.SpecificClient_groupBox.Size = new System.Drawing.Size(233, 220);
             this.SpecificClient_groupBox.TabIndex = 7;
             this.SpecificClient_groupBox.TabStop = false;
             // 
             // ClientFine_button
             // 
-            this.ClientFine_button.Location = new System.Drawing.Point(125, 154);
+            this.ClientFine_button.Location = new System.Drawing.Point(14, 147);
             this.ClientFine_button.Name = "ClientFine_button";
             this.ClientFine_button.Size = new System.Drawing.Size(89, 30);
             this.ClientFine_button.TabIndex = 14;
@@ -180,7 +188,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(6, 122);
+            this.label4.Location = new System.Drawing.Point(6, 115);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(217, 29);
             this.label4.TabIndex = 13;
@@ -197,22 +205,22 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(10, 57);
+            this.label1.Location = new System.Drawing.Point(10, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(217, 29);
             this.label1.TabIndex = 11;
             this.label1.Text = "Число книг у клиента";
             // 
-            // textBox1
+            // ClientID_textBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(139, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(75, 28);
-            this.textBox1.TabIndex = 10;
+            this.ClientID_textBox.Location = new System.Drawing.Point(129, 17);
+            this.ClientID_textBox.Name = "ClientID_textBox";
+            this.ClientID_textBox.Size = new System.Drawing.Size(89, 28);
+            this.ClientID_textBox.TabIndex = 10;
             // 
             // ClientCount_button
             // 
-            this.ClientCount_button.Location = new System.Drawing.Point(125, 89);
+            this.ClientCount_button.Location = new System.Drawing.Point(14, 80);
             this.ClientCount_button.Name = "ClientCount_button";
             this.ClientCount_button.Size = new System.Drawing.Size(89, 30);
             this.ClientCount_button.TabIndex = 9;
@@ -221,24 +229,34 @@
             // 
             // BigFine_groupBox
             // 
+            this.BigFine_groupBox.Controls.Add(this.BigFineClear_button);
+            this.BigFine_groupBox.Controls.Add(this.Maxfine_textBox);
             this.BigFine_groupBox.Controls.Add(this.BigFine_button);
             this.BigFine_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BigFine_groupBox.Location = new System.Drawing.Point(930, 482);
+            this.BigFine_groupBox.Location = new System.Drawing.Point(851, 261);
             this.BigFine_groupBox.Name = "BigFine_groupBox";
-            this.BigFine_groupBox.Size = new System.Drawing.Size(154, 105);
+            this.BigFine_groupBox.Size = new System.Drawing.Size(233, 101);
             this.BigFine_groupBox.TabIndex = 8;
             this.BigFine_groupBox.TabStop = false;
             this.BigFine_groupBox.Text = "Самый большой штраф";
             // 
+            // Maxfine_textBox
+            // 
+            this.Maxfine_textBox.Location = new System.Drawing.Point(134, 45);
+            this.Maxfine_textBox.Name = "Maxfine_textBox";
+            this.Maxfine_textBox.Size = new System.Drawing.Size(89, 28);
+            this.Maxfine_textBox.TabIndex = 11;
+            // 
             // BigFine_button
             // 
             this.BigFine_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BigFine_button.Location = new System.Drawing.Point(49, 64);
+            this.BigFine_button.Location = new System.Drawing.Point(14, 27);
             this.BigFine_button.Name = "BigFine_button";
-            this.BigFine_button.Size = new System.Drawing.Size(89, 30);
+            this.BigFine_button.Size = new System.Drawing.Size(109, 30);
             this.BigFine_button.TabIndex = 10;
             this.BigFine_button.Text = "Найти";
             this.BigFine_button.UseVisualStyleBackColor = true;
+            this.BigFine_button.Click += new System.EventHandler(this.BigFine_button_Click);
             // 
             // PopBooks_groupBox
             // 
@@ -322,6 +340,42 @@
             this.AddJournal_button.Text = "Добавить";
             this.AddJournal_button.UseVisualStyleBackColor = true;
             // 
+            // ClientIDFine_textBox
+            // 
+            this.ClientIDFine_textBox.Location = new System.Drawing.Point(129, 147);
+            this.ClientIDFine_textBox.Name = "ClientIDFine_textBox";
+            this.ClientIDFine_textBox.Size = new System.Drawing.Size(89, 28);
+            this.ClientIDFine_textBox.TabIndex = 15;
+            // 
+            // ClientIDCount_textBox
+            // 
+            this.ClientIDCount_textBox.Location = new System.Drawing.Point(129, 81);
+            this.ClientIDCount_textBox.Name = "ClientIDCount_textBox";
+            this.ClientIDCount_textBox.Size = new System.Drawing.Size(89, 28);
+            this.ClientIDCount_textBox.TabIndex = 16;
+            // 
+            // BigFineClear_button
+            // 
+            this.BigFineClear_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BigFineClear_button.Location = new System.Drawing.Point(14, 63);
+            this.BigFineClear_button.Name = "BigFineClear_button";
+            this.BigFineClear_button.Size = new System.Drawing.Size(109, 30);
+            this.BigFineClear_button.TabIndex = 12;
+            this.BigFineClear_button.Text = "Очистить";
+            this.BigFineClear_button.UseVisualStyleBackColor = true;
+            this.BigFineClear_button.Click += new System.EventHandler(this.BigFineClear_button_Click);
+            // 
+            // ClientIDClear_button
+            // 
+            this.ClientIDClear_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ClientIDClear_button.Location = new System.Drawing.Point(60, 183);
+            this.ClientIDClear_button.Name = "ClientIDClear_button";
+            this.ClientIDClear_button.Size = new System.Drawing.Size(105, 30);
+            this.ClientIDClear_button.TabIndex = 17;
+            this.ClientIDClear_button.Text = "Очистить";
+            this.ClientIDClear_button.UseVisualStyleBackColor = true;
+            this.ClientIDClear_button.Click += new System.EventHandler(this.ClientIDClear_button_Click);
+            // 
             // WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -356,6 +410,7 @@
             this.SpecificClient_groupBox.ResumeLayout(false);
             this.SpecificClient_groupBox.PerformLayout();
             this.BigFine_groupBox.ResumeLayout(false);
+            this.BigFine_groupBox.PerformLayout();
             this.PopBooks_groupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -378,7 +433,7 @@
         private System.Windows.Forms.Button ClientCount_button;
         private System.Windows.Forms.Button BigFine_button;
         private System.Windows.Forms.Button TopBook_button;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox ClientID_textBox;
         private System.Windows.Forms.Button UpdateJournal_button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -389,5 +444,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button ClientFine_button;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox Maxfine_textBox;
+        private System.Windows.Forms.TextBox ClientIDFine_textBox;
+        private System.Windows.Forms.TextBox ClientIDCount_textBox;
+        private System.Windows.Forms.Button BigFineClear_button;
+        private System.Windows.Forms.Button ClientIDClear_button;
     }
 }

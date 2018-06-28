@@ -139,11 +139,51 @@ namespace LibraryProject
             cmdBooks.Connection = conn;
             cmdBooks.CommandType = CommandType.Text;
 
+            
+
             OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdBooks);
             DataTable dtJournal = new DataTable();
             adapterJournal.Fill(dtJournal);
             dgvWork.DataSource = dtJournal;
             dgvWork.Refresh();
+        }
+
+        private void BigFine_button_Click(object sender, EventArgs e)
+        {
+            string topScript = File.ReadAllText("../../Scripts/MaxFine.sql");
+            if (conn.ConnectionString == "")
+            {
+                conn.ConnectionString = Variables.connString;
+            }
+
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+
+            OracleCommand cmdJournal = new OracleCommand();
+            cmdJournal.CommandText = topScript;
+            cmdJournal.Connection = conn;
+            cmdJournal.CommandType = CommandType.Text;
+
+            OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdJournal);
+
+            //OracleDataReader odr = cmdJournal.ExecuteReader();
+
+            //DataSet dtJournal = new DataSet();
+            //DataTable dtJournal = new DataTable();
+            //adapterJournal.Fill(dtJournal);
+            Maxfine_textBox.Text = cmdJournal.ExecuteScalar().ToString();
+        }
+
+        private void BigFineClear_button_Click(object sender, EventArgs e)
+        {
+            Maxfine_textBox.Text = null;
+        }
+
+        private void ClientIDClear_button_Click(object sender, EventArgs e)
+        {
+            ClientID_textBox.Text = null;
+            ClientIDCount_textBox.Text = null;
+            ClientIDFine_textBox.Text = null;
         }
     }
 }

@@ -111,15 +111,38 @@ namespace LibraryProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT MAX(FULLFINE)
+        ///FROM (
+        ///    SELECT CLIENT_ID,SUM(FINE*DAYS) as fullfine
+        ///    FROM (
+        ///        SELECT 
+        ///            JOURNAL.CLIENT_ID,BOOK_TYPES.FINE,ROUND((MONTHS_BETWEEN(JOURNAL.DATE_RET,JOURNAL.DATE_END)/12)*365) days
+        ///        FROM JOURNAL
+        ///        INNER JOIN BOOKS
+        ///            ON JOURNAL.BOOK_ID = BOOKS.ID
+        ///        INNER JOIN BOOK_TYPES
+        ///            ON BOOKS.TYPE_ID = BOOK_TYPES.ID
+        ///    )
+        ///    GROUP BY CLIENT_ID
+        ///).
+        /// </summary>
+        internal static string MaxFine {
+            get {
+                return ResourceManager.GetString("MaxFine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT *
         ///FROM (
+        ///
         ///    SELECT JOURNAL.BOOK_ID, BOOKS.NAME, COUNT(*) as cnt 
         ///    FROM JOURNAL
         ///    INNER JOIN BOOKS
         ///        ON JOURNAL.BOOK_ID = BOOKS.ID
         ///    GROUP BY JOURNAL.BOOK_ID,BOOKS.NAME
         ///    ORDER BY cnt DESC
-        ///)WHERE ROWNUM &lt;= 3;.
+        ///)WHERE ROWNUM &lt;= 3.
         /// </summary>
         internal static string Top3 {
             get {

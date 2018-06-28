@@ -177,6 +177,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Scripts\SpecificFine.sql" />
+    <None Include="Scripts\BookCounter.sql" />
     <None Include="Scripts\MaxFine.sql" />
     <None Include="Scripts\Top3.sql" />
     <None Include="Images\Clients.jpg" />

@@ -61,6 +61,20 @@ namespace LibraryProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT COUNT(JOURNAL.BOOK_ID) as Book_Count
+        ///FROM CLIENTS
+        ///LEFT JOIN JOURNAL
+        ///    ON CLIENTS.ID = JOURNAL.CLIENT_ID
+        ///WHERE CLIENTS.ID = :ID
+        ///GROUP BY CLIENTS.ID.
+        /// </summary>
+        internal static string BookCounter {
+            get {
+                return ResourceManager.GetString("BookCounter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Books {
@@ -129,6 +143,30 @@ namespace LibraryProject.Properties {
         internal static string MaxFine {
             get {
                 return ResourceManager.GetString("MaxFine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT FULLFINE
+        ///FROM (
+        ///    SELECT CLIENT_ID,SUM(FINE*DAYS) as fullfine
+        ///    FROM (
+        ///        SELECT 
+        ///            JOURNAL.CLIENT_ID,JOURNAL.BOOK_ID,BOOKS.TYPE_ID,BOOK_TYPES.FINE,ROUND((MONTHS_BETWEEN(JOURNAL.DATE_RET,JOURNAL.DATE_END)/12)*365) days
+        ///        FROM JOURNAL
+        ///        INNER JOIN BOOKS
+        ///            ON JOURNAL.BOOK_ID = BOOKS.ID
+        ///        INNER JOIN BOOK_TYPES
+        ///            ON BOOKS.TYPE_ID = BOOK_TYPES.ID
+        ///    )
+        ///    GROUP BY CLIENT_ID
+        ///    ORDER BY CLIENT_ID
+        ///)
+        ///WHERE  FULLFINE &gt; 0 and CLIENT_ID = [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string SpecificFine {
+            get {
+                return ResourceManager.GetString("SpecificFine", resourceCulture);
             }
         }
         

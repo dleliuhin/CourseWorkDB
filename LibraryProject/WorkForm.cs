@@ -91,7 +91,7 @@ namespace LibraryProject
 
         private void dgvWork_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            ClientID_textBox.Text = dgvWork.CurrentRow.Cells[2].Value.ToString();
         }
 
         private void TopBook_button_Click(object sender, EventArgs e)
@@ -139,8 +139,6 @@ namespace LibraryProject
             cmdBooks.Connection = conn;
             cmdBooks.CommandType = CommandType.Text;
 
-            
-
             OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdBooks);
             DataTable dtJournal = new DataTable();
             adapterJournal.Fill(dtJournal);
@@ -151,6 +149,7 @@ namespace LibraryProject
         private void BigFine_button_Click(object sender, EventArgs e)
         {
             string topScript = File.ReadAllText("../../Scripts/MaxFine.sql");
+
             if (conn.ConnectionString == "")
             {
                 conn.ConnectionString = Variables.connString;
@@ -166,11 +165,6 @@ namespace LibraryProject
 
             OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdJournal);
 
-            //OracleDataReader odr = cmdJournal.ExecuteReader();
-
-            //DataSet dtJournal = new DataSet();
-            //DataTable dtJournal = new DataTable();
-            //adapterJournal.Fill(dtJournal);
             Maxfine_textBox.Text = cmdJournal.ExecuteScalar().ToString();
         }
 
@@ -182,6 +176,70 @@ namespace LibraryProject
         private void ClientIDClear_button_Click(object sender, EventArgs e)
         {
             ClientID_textBox.Text = null;
+            ClientIDCount_textBox.Text = null;
+            ClientIDFine_textBox.Text = null;
+        }
+
+        private void ClientCount_button_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(ClientID_textBox.Text))
+            {
+                MessageBox.Show("Пожалуйста, введите ID клиента.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                string topScript = File.ReadAllText("../../Scripts/BookCounter.sql");
+
+                if (conn.ConnectionString == "")
+                {
+                    conn.ConnectionString = Variables.connString;
+                }
+
+                if (conn.State == ConnectionState.Closed)
+                    conn.Open();
+
+                OracleCommand cmdJournal = new OracleCommand();
+                cmdJournal.CommandText = topScript;
+                cmdJournal.Connection = conn;
+                cmdJournal.CommandType = CommandType.Text;
+
+                cmdJournal.Parameters.Add("ID", OracleDbType.Int32, 6).Value = Int32.Parse(ClientID_textBox.Text);
+
+                ClientIDCount_textBox.Text = cmdJournal.ExecuteScalar().ToString();
+            }
+        }
+
+        private void ClientFine_button_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(ClientID_textBox.Text))
+            {
+                MessageBox.Show("Пожалуйста введите ID клиента.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                string topScript = File.ReadAllText("../../Scripts/SpecificFine.sql");
+
+                if (conn.ConnectionString == "")
+                {
+                    conn.ConnectionString = Variables.connString;
+                }
+
+                if (conn.State == ConnectionState.Closed)
+                    conn.Open();
+
+                OracleCommand cmdJournal = new OracleCommand();
+                cmdJournal.CommandText = topScript;
+                cmdJournal.Connection = conn;
+                cmdJournal.CommandType = CommandType.Text;
+
+                cmdJournal.Parameters.Add("CLIENT_ID ", OracleDbType.Int32, 6).Value = Int32.Parse(ClientID_textBox.Text);
+
+                ClientIDFine_textBox.Text = (Int32)cmdJournal.ExecuteScalar().ToString();
+            }
+        }
+
+        private void ClientID_textBox_TextChanged(object sender, EventArgs e)
+        {
             ClientIDCount_textBox.Text = null;
             ClientIDFine_textBox.Text = null;
         }

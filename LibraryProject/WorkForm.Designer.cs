@@ -40,6 +40,9 @@
             this.libraryDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.libraryDataSet = new LibraryProject.LibraryDataSet();
             this.SpecificClient_groupBox = new System.Windows.Forms.GroupBox();
+            this.ClientIDClear_button = new System.Windows.Forms.Button();
+            this.ClientIDCount_textBox = new System.Windows.Forms.TextBox();
+            this.ClientIDFine_textBox = new System.Windows.Forms.TextBox();
             this.ClientFine_button = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,6 +50,7 @@
             this.ClientID_textBox = new System.Windows.Forms.TextBox();
             this.ClientCount_button = new System.Windows.Forms.Button();
             this.BigFine_groupBox = new System.Windows.Forms.GroupBox();
+            this.BigFineClear_button = new System.Windows.Forms.Button();
             this.Maxfine_textBox = new System.Windows.Forms.TextBox();
             this.BigFine_button = new System.Windows.Forms.Button();
             this.PopBooks_groupBox = new System.Windows.Forms.GroupBox();
@@ -57,10 +61,6 @@
             this.ClrJournal_button = new System.Windows.Forms.Button();
             this.ListJoural_button = new System.Windows.Forms.Button();
             this.AddJournal_button = new System.Windows.Forms.Button();
-            this.ClientIDFine_textBox = new System.Windows.Forms.TextBox();
-            this.ClientIDCount_textBox = new System.Windows.Forms.TextBox();
-            this.BigFineClear_button = new System.Windows.Forms.Button();
-            this.ClientIDClear_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvWork)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.libraryDataSetBindingSource)).BeginInit();
@@ -176,6 +176,31 @@
             this.SpecificClient_groupBox.TabIndex = 7;
             this.SpecificClient_groupBox.TabStop = false;
             // 
+            // ClientIDClear_button
+            // 
+            this.ClientIDClear_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ClientIDClear_button.Location = new System.Drawing.Point(60, 183);
+            this.ClientIDClear_button.Name = "ClientIDClear_button";
+            this.ClientIDClear_button.Size = new System.Drawing.Size(105, 30);
+            this.ClientIDClear_button.TabIndex = 17;
+            this.ClientIDClear_button.Text = "Очистить";
+            this.ClientIDClear_button.UseVisualStyleBackColor = true;
+            this.ClientIDClear_button.Click += new System.EventHandler(this.ClientIDClear_button_Click);
+            // 
+            // ClientIDCount_textBox
+            // 
+            this.ClientIDCount_textBox.Location = new System.Drawing.Point(129, 81);
+            this.ClientIDCount_textBox.Name = "ClientIDCount_textBox";
+            this.ClientIDCount_textBox.Size = new System.Drawing.Size(89, 28);
+            this.ClientIDCount_textBox.TabIndex = 16;
+            // 
+            // ClientIDFine_textBox
+            // 
+            this.ClientIDFine_textBox.Location = new System.Drawing.Point(129, 147);
+            this.ClientIDFine_textBox.Name = "ClientIDFine_textBox";
+            this.ClientIDFine_textBox.Size = new System.Drawing.Size(89, 28);
+            this.ClientIDFine_textBox.TabIndex = 15;
+            // 
             // ClientFine_button
             // 
             this.ClientFine_button.Location = new System.Drawing.Point(14, 147);
@@ -184,6 +209,7 @@
             this.ClientFine_button.TabIndex = 14;
             this.ClientFine_button.Text = "Найти";
             this.ClientFine_button.UseVisualStyleBackColor = true;
+            this.ClientFine_button.Click += new System.EventHandler(this.ClientFine_button_Click);
             // 
             // label4
             // 
@@ -217,6 +243,7 @@
             this.ClientID_textBox.Name = "ClientID_textBox";
             this.ClientID_textBox.Size = new System.Drawing.Size(89, 28);
             this.ClientID_textBox.TabIndex = 10;
+            this.ClientID_textBox.TextChanged += new System.EventHandler(this.ClientID_textBox_TextChanged);
             // 
             // ClientCount_button
             // 
@@ -226,6 +253,7 @@
             this.ClientCount_button.TabIndex = 9;
             this.ClientCount_button.Text = "Найти";
             this.ClientCount_button.UseVisualStyleBackColor = true;
+            this.ClientCount_button.Click += new System.EventHandler(this.ClientCount_button_Click);
             // 
             // BigFine_groupBox
             // 
@@ -239,6 +267,17 @@
             this.BigFine_groupBox.TabIndex = 8;
             this.BigFine_groupBox.TabStop = false;
             this.BigFine_groupBox.Text = "Самый большой штраф";
+            // 
+            // BigFineClear_button
+            // 
+            this.BigFineClear_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BigFineClear_button.Location = new System.Drawing.Point(14, 63);
+            this.BigFineClear_button.Name = "BigFineClear_button";
+            this.BigFineClear_button.Size = new System.Drawing.Size(109, 30);
+            this.BigFineClear_button.TabIndex = 12;
+            this.BigFineClear_button.Text = "Очистить";
+            this.BigFineClear_button.UseVisualStyleBackColor = true;
+            this.BigFineClear_button.Click += new System.EventHandler(this.BigFineClear_button_Click);
             // 
             // Maxfine_textBox
             // 
@@ -339,42 +378,6 @@
             this.AddJournal_button.TabIndex = 40;
             this.AddJournal_button.Text = "Добавить";
             this.AddJournal_button.UseVisualStyleBackColor = true;
-            // 
-            // ClientIDFine_textBox
-            // 
-            this.ClientIDFine_textBox.Location = new System.Drawing.Point(129, 147);
-            this.ClientIDFine_textBox.Name = "ClientIDFine_textBox";
-            this.ClientIDFine_textBox.Size = new System.Drawing.Size(89, 28);
-            this.ClientIDFine_textBox.TabIndex = 15;
-            // 
-            // ClientIDCount_textBox
-            // 
-            this.ClientIDCount_textBox.Location = new System.Drawing.Point(129, 81);
-            this.ClientIDCount_textBox.Name = "ClientIDCount_textBox";
-            this.ClientIDCount_textBox.Size = new System.Drawing.Size(89, 28);
-            this.ClientIDCount_textBox.TabIndex = 16;
-            // 
-            // BigFineClear_button
-            // 
-            this.BigFineClear_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BigFineClear_button.Location = new System.Drawing.Point(14, 63);
-            this.BigFineClear_button.Name = "BigFineClear_button";
-            this.BigFineClear_button.Size = new System.Drawing.Size(109, 30);
-            this.BigFineClear_button.TabIndex = 12;
-            this.BigFineClear_button.Text = "Очистить";
-            this.BigFineClear_button.UseVisualStyleBackColor = true;
-            this.BigFineClear_button.Click += new System.EventHandler(this.BigFineClear_button_Click);
-            // 
-            // ClientIDClear_button
-            // 
-            this.ClientIDClear_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ClientIDClear_button.Location = new System.Drawing.Point(60, 183);
-            this.ClientIDClear_button.Name = "ClientIDClear_button";
-            this.ClientIDClear_button.Size = new System.Drawing.Size(105, 30);
-            this.ClientIDClear_button.TabIndex = 17;
-            this.ClientIDClear_button.Text = "Очистить";
-            this.ClientIDClear_button.UseVisualStyleBackColor = true;
-            this.ClientIDClear_button.Click += new System.EventHandler(this.ClientIDClear_button_Click);
             // 
             // WorkForm
             // 

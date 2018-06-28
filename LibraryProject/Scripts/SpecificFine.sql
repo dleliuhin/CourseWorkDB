@@ -1,4 +1,5 @@
-SELECT FULLFINE
+
+SELECT fullfine
 FROM (
     SELECT CLIENT_ID,SUM(FINE*DAYS) as fullfine
     FROM (
@@ -13,4 +14,4 @@ FROM (
     GROUP BY CLIENT_ID
     ORDER BY CLIENT_ID
 )
-WHERE  fullfine > 0 AND CLIENT_ID = :CLIENT_ID
+WHERE fullfine > 0 AND CLIENT_ID = 9

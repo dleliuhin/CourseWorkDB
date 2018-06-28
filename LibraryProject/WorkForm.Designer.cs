@@ -259,6 +259,7 @@
             this.TopBook_button.TabIndex = 10;
             this.TopBook_button.Text = "Найти";
             this.TopBook_button.UseVisualStyleBackColor = true;
+            this.TopBook_button.Click += new System.EventHandler(this.TopBook_button_Click);
             // 
             // UpdateJournal_button
             // 
@@ -298,6 +299,7 @@
             this.ClrJournal_button.TabIndex = 36;
             this.ClrJournal_button.Text = "Очистить";
             this.ClrJournal_button.UseVisualStyleBackColor = true;
+            this.ClrJournal_button.Click += new System.EventHandler(this.ClrJournal_button_Click);
             // 
             // ListJoural_button
             // 
@@ -308,6 +310,7 @@
             this.ListJoural_button.TabIndex = 41;
             this.ListJoural_button.Text = "Список";
             this.ListJoural_button.UseVisualStyleBackColor = true;
+            this.ListJoural_button.Click += new System.EventHandler(this.ListJoural_button_Click);
             // 
             // AddJournal_button
             // 

@@ -14,4 +14,3 @@ D:\CourseWorkDB\LibraryProject\obj\Debug\LibraryProject.pdb
 D:\CourseWorkDB\LibraryProject\obj\Debug\LibraryProject.ClientsForm.resources
 D:\CourseWorkDB\LibraryProject\obj\Debug\LibraryProject.BooksForm.resources
 D:\CourseWorkDB\LibraryProject\obj\Debug\LibraryProject.BookTypesForm.resources
-D:\CourseWorkDB\LibraryProject\obj\Debug\LibraryProject.AllResources.resources

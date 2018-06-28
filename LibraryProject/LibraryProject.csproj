@@ -89,11 +89,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AllResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="BooksForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,10 +127,6 @@
     <Compile Include="WorkForm.Designer.cs">
       <DependentUpon>WorkForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AllResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AllResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="BooksForm.resx">
       <DependentUpon>BooksForm.cs</DependentUpon>
     </EmbeddedResource>

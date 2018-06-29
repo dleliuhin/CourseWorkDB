@@ -320,7 +320,7 @@ namespace LibraryProject
                     cmdJournal.Parameters.Add("ID", OracleDbType.Int32, 6).Value = Int32.Parse(IDjour_textBox.Text);
                     cmdJournal.Parameters.Add("BOOK_ID", OracleDbType.Int32, 6).Value = Int32.Parse(BookIDjour_textBox.Text);
                     cmdJournal.Parameters.Add("CLIENT_ID", OracleDbType.Int32, 6).Value = Int32.Parse(ClientIDjour_textBox.Text);
-                    cmdJournal.Parameters.Add("DATE_BEG", OracleDbType.TimeStamp, 3).Value = DateBeg_textBox.Text;
+                    cmdJournal.Parameters.Add("DATE_BEG", OracleDbType.TimeStamp).Value = DateBeg_textBox.Text;
                     break;
                     
                 case 1:
@@ -328,9 +328,9 @@ namespace LibraryProject
                     cmdJournal.Parameters.Add("ID", OracleDbType.Int32, 6).Value = Int32.Parse(IDjour_textBox.Text);
                     cmdJournal.Parameters.Add("BOOK_ID", OracleDbType.Int32, 6).Value = Int32.Parse(BookIDjour_textBox.Text);
                     cmdJournal.Parameters.Add("CLIENT_ID", OracleDbType.Int32, 6).Value = Int32.Parse(ClientIDjour_textBox.Text);
-                    cmdJournal.Parameters.Add("DATE_BEG", OracleDbType.TimeStamp, 3).Value = DateBeg_textBox.Text;
-                    cmdJournal.Parameters.Add("DATE_END", OracleDbType.TimeStamp, 3).Value = DateEnd_textBox.Text;
-                    cmdJournal.Parameters.Add("DATE_RET", OracleDbType.TimeStamp, 3).Value = DateRet_textBox.Text;
+                    cmdJournal.Parameters.Add("DATE_BEG", OracleDbType.TimeStamp).Value = DateBeg_textBox.Text;
+                    cmdJournal.Parameters.Add("DATE_END", OracleDbType.TimeStamp).Value = DateEnd_textBox.Text;
+                    cmdJournal.Parameters.Add("DATE_RET", OracleDbType.TimeStamp).Value = DateRet_textBox.Text;
                     break;
 
                 case 2:
@@ -359,7 +359,7 @@ namespace LibraryProject
 
         private void DateBeg_textBox_TextChanged(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(IDjour_textBox.Text) || String.IsNullOrEmpty(ClientIDjour_textBox.Text) || String.IsNullOrEmpty(DateBeg_textBox.Text))
+            if (String.IsNullOrEmpty(IDjour_textBox.Text) || String.IsNullOrEmpty(DateBeg_textBox.Text))
             { }
             else
             {
@@ -411,6 +411,7 @@ namespace LibraryProject
         private Int32 GetBookCount()
         {
             string topScript = File.ReadAllText("../../Scripts/BookCounter.sql");
+            Int32 resBookCnt;
 
             if (conn.ConnectionString == "")
             {
@@ -425,9 +426,18 @@ namespace LibraryProject
             cmdJournal.Connection = conn;
             cmdJournal.CommandType = CommandType.Text;
 
+            cmdJournal.Parameters.Add("ID", OracleDbType.Int32, 6).Value = Int32.Parse(IDjour_textBox.Text);
+
             OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdJournal);
 
-            return Int32.Parse(cmdJournal.ExecuteScalar().ToString());
+            resBookCnt = Int32.Parse(cmdJournal.ExecuteScalar().ToString());
+
+            if (resBookCnt.ToString() == null || resBookCnt.ToString() == "")
+            {
+                resBookCnt = 0;
+            }
+
+            return resBookCnt;
         }
     }
 }

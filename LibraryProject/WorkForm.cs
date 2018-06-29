@@ -92,6 +92,13 @@ namespace LibraryProject
         private void dgvWork_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             ClientID_textBox.Text = dgvWork.CurrentRow.Cells[2].Value.ToString();
+
+            IDjour_textBox.Text = dgvWork.CurrentRow.Cells[0].Value.ToString();
+            BookIDjour_textBox.Text = dgvWork.CurrentRow.Cells[1].Value.ToString();
+            ClientIDjour_textBox.Text = dgvWork.CurrentRow.Cells[2].Value.ToString();
+            DateBeg_textBox.Text = dgvWork.CurrentRow.Cells[3].Value.ToString();
+            DateEnd_textBox.Text = dgvWork.CurrentRow.Cells[4].Value.ToString();
+            DateRet_textBox.Text = dgvWork.CurrentRow.Cells[5].Value.ToString();
         }
 
         private void TopBook_button_Click(object sender, EventArgs e)

@@ -148,12 +148,12 @@ namespace LibraryProject
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
 
-            OracleCommand cmdBooks = new OracleCommand();
-            cmdBooks.CommandText = "SELECT * FROM JOURNAL";
-            cmdBooks.Connection = conn;
-            cmdBooks.CommandType = CommandType.Text;
+            OracleCommand cmdJournal = new OracleCommand();
+            cmdJournal.CommandText = "SELECT * FROM JOURNAL";
+            cmdJournal.Connection = conn;
+            cmdJournal.CommandType = CommandType.Text;
 
-            OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdBooks);
+            OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdJournal);
             DataTable dtJournal = new DataTable();
             adapterJournal.Fill(dtJournal);
             dgvWork.DataSource = dtJournal;
@@ -267,7 +267,7 @@ namespace LibraryProject
             }
             else
             {
-                String sql = "INSERT INTO JOURNAL (ID,BOOK_ID,CLIENT_ID,DATE_BEG) VALUES(:ID,:BOOK_ID,:CLIENT_ID,:DATE_BEG)";
+                String sql = "INSERT INTO JOURNAL(ID,BOOK_ID,CLIENT_ID,DATE_BEG) VALUES(:ID,:BOOK_ID,:CLIENT_ID,:DATE_BEG)";
                 AUD_Book(sql, 0);
             }
         }

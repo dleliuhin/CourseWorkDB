@@ -145,4 +145,13 @@
   <data name="SpecificFine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Scripts\SpecificFine.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="CurrentDate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\CurrentDate.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="DateEnding" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\DateEnding.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="GetFine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Scripts\GetFine.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
 </root>

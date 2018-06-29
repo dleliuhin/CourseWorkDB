@@ -105,6 +105,42 @@ namespace LibraryProject.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT TO_CHAR
+        ///    (SYSDATE, &apos;DD.MM.YY&apos;)
+        ///    &quot;NOW&quot;
+        ///     FROM DUAL.
+        /// </summary>
+        internal static string CurrentDate {
+            get {
+                return ResourceManager.GetString("CurrentDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT TRUNC(SYSDATE) + NUMTODSINTERVAL(:D, &apos;day&apos;) TAG
+        ///FROM DUAL.
+        /// </summary>
+        internal static string DateEnding {
+            get {
+                return ResourceManager.GetString("DateEnding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to     SELECT BOOK_TYPES.DAY_COUNT
+        ///    AS CNT
+        ///    FROM JOURNAL
+        ///    INNER JOIN BOOKS ON JOURNAL.BOOK_ID = BOOKS.ID
+        ///    INNER JOIN BOOK_TYPES ON BOOKS.TYPE_ID = BOOK_TYPES.ID
+        ///    AND JOURNAL.ID = :ID.
+        /// </summary>
+        internal static string GetFine {
+            get {
+                return ResourceManager.GetString("GetFine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Librarian {
@@ -125,20 +161,15 @@ namespace LibraryProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT MAX(FULLFINE)
-        ///FROM (
-        ///    SELECT CLIENT_ID,SUM(FINE*DAYS) as fullfine
-        ///    FROM (
-        ///        SELECT 
-        ///            JOURNAL.CLIENT_ID,BOOK_TYPES.FINE,ROUND((MONTHS_BETWEEN(JOURNAL.DATE_RET,JOURNAL.DATE_END)/12)*365) days
-        ///        FROM JOURNAL
-        ///        INNER JOIN BOOKS
-        ///            ON JOURNAL.BOOK_ID = BOOKS.ID
-        ///        INNER JOIN BOOK_TYPES
-        ///            ON BOOKS.TYPE_ID = BOOK_TYPES.ID
-        ///    )
-        ///    GROUP BY CLIENT_ID
-        ///).
+        ///   Looks up a localized string similar to SELECT MAX(&quot;MAX FINE&quot;) FROM
+        ///(
+        ///SELECT CLIENTS.FIRST_NAME, CLIENTS.LAST_NAME, CLIENTS.FATHER_NAME, MAX(TOTAL_FINES.FINE_SUM) AS &quot;MAX FINE&quot;
+        ///  FROM (
+        ///    SELECT JOURNAL.CLIENT_ID AS FINEMAN_ID, SUM(DECODE(SIGN(EXTRACT(DAY FROM((JOURNAL.DATE_RET - JOURNAL.DATE_END)))),1,(BOOK_TYPES.FINE * EXTRACT(DAY FROM((JOURNAL.DATE_RET - JOURNAL.DATE_END)))),-1,0,0)) AS FINE_SUM
+        ///      FROM JOURNAL
+        ///      INNER JOIN BOOKS ON JOURNAL.BOOK_ID = BOOKS.ID
+        ///      INNER JOIN BOOK_TYPES ON BOOKS.TYPE_ID = BOOK_TYPES.ID
+        ///      G [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MaxFine {
             get {
@@ -147,22 +178,15 @@ namespace LibraryProject.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT FULLFINE
-        ///FROM (
-        ///    SELECT CLIENT_ID,SUM(FINE*DAYS) as fullfine
-        ///    FROM (
-        ///        SELECT 
-        ///            JOURNAL.CLIENT_ID,JOURNAL.BOOK_ID,BOOKS.TYPE_ID,BOOK_TYPES.FINE,ROUND((MONTHS_BETWEEN(JOURNAL.DATE_RET,JOURNAL.DATE_END)/12)*365) days
-        ///        FROM JOURNAL
-        ///        INNER JOIN BOOKS
-        ///            ON JOURNAL.BOOK_ID = BOOKS.ID
-        ///        INNER JOIN BOOK_TYPES
-        ///            ON BOOKS.TYPE_ID = BOOK_TYPES.ID
-        ///    )
-        ///    GROUP BY CLIENT_ID
-        ///    ORDER BY CLIENT_ID
-        ///)
-        ///WHERE  FULLFINE &gt; 0 and CLIENT_ID = [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to SELECT
+        ///  SUM(DECODE(SIGN(EXTRACT(DAY FROM((JOURNAL.DATE_RET - JOURNAL.DATE_END)))),1,(BOOK_TYPES.FINE * EXTRACT(DAY FROM((JOURNAL.DATE_RET - JOURNAL.DATE_END)))),-1,0,0)) AS &quot;TOTAL FINE&quot;
+        ///  FROM JOURNAL
+        ///  INNER JOIN CLIENTS ON JOURNAL.CLIENT_ID = CLIENTS.ID
+        ///  INNER JOIN BOOKS ON JOURNAL.BOOK_ID = BOOKS.ID
+        ///  INNER JOIN BOOK_TYPES ON BOOKS.TYPE_ID = BOOK_TYPES.ID
+        ///  WHERE JOURNAL.CLIENT_ID = :CLIENT_ID
+        ///  GROUP BY CLIENTS.FIRST_NAME, CLIENTS.LAST_NAME, CLIENTS.FATHER_NAME
+        ///.
         /// </summary>
         internal static string SpecificFine {
             get {

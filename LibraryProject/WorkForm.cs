@@ -48,6 +48,8 @@ namespace LibraryProject
             DataTable dtJournal = new DataTable();
             adapterJournal.Fill(dtJournal);
             dgvWork.DataSource = dtJournal;
+
+            DateBeg_textBox.Text = GetCurDate();
         }
 
         private void Exit_button_Click(object sender, EventArgs e)
@@ -104,6 +106,7 @@ namespace LibraryProject
         private void TopBook_button_Click(object sender, EventArgs e)
         {
             string topScript = File.ReadAllText("../../Scripts/top3.sql");
+
             if (conn.ConnectionString == "")
             {
                 conn.ConnectionString = Variables.connString;
@@ -268,7 +271,7 @@ namespace LibraryProject
             else
             {
                 String sql = "INSERT INTO JOURNAL(ID,BOOK_ID,CLIENT_ID,DATE_BEG) VALUES(:ID,:BOOK_ID,:CLIENT_ID,:DATE_BEG)";
-                AUD_Book(sql, 0);
+                AUD_Journal(sql, 0);
             }
         }
 
@@ -282,7 +285,7 @@ namespace LibraryProject
             else
             {
                 String sql = "DELETE FROM JOURNAL WHERE ID = :ID";
-                AUD_Book(sql, 2);
+                AUD_Journal(sql, 2);
             }
         }
 
@@ -296,11 +299,11 @@ namespace LibraryProject
             else
             {
                 String sql = "UPDATE JOURNAL SET BOOK_ID = :BOOK_ID, CLIENT_ID = :CLIENT_ID, DATE_BEG = :DATE_BEG, DATE_END = :DATE_END, DATE_RET = :DATE_RET, WHERE ID = :ID ";
-                AUD_Book(sql, 1);
+                AUD_Journal(sql, 1);
             }
         }
 
-        private void AUD_Book(string sql, int state)
+        private void AUD_Journal(string sql, int state)
         {
             if (conn.State == ConnectionState.Closed)
                 conn.Open();
@@ -352,6 +355,79 @@ namespace LibraryProject
                 }
             }
             catch (Exception exep) { };
+        }
+
+        private void DateBeg_textBox_TextChanged(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(IDjour_textBox.Text) || String.IsNullOrEmpty(ClientIDjour_textBox.Text) || String.IsNullOrEmpty(DateBeg_textBox.Text))
+            { }
+            else
+            {
+                string topScript = File.ReadAllText("../../Scripts/DateEnding.sql");
+
+                if (conn.ConnectionString == "")
+                {
+                    conn.ConnectionString = Variables.connString;
+                }
+
+                if (conn.State == ConnectionState.Closed)
+                    conn.Open();
+
+                OracleCommand cmdJournal = new OracleCommand();
+                cmdJournal.CommandText = topScript;
+                cmdJournal.Connection = conn;
+                cmdJournal.CommandType = CommandType.Text;
+
+                cmdJournal.Parameters.Add("D", OracleDbType.Int32, 6).Value = GetBookCount();
+
+                OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdJournal);
+
+                DateEnd_textBox.Text = cmdJournal.ExecuteScalar().ToString();
+            }
+        }
+
+        private string GetCurDate()
+        {
+            string topScript = File.ReadAllText("../../Scripts/CurrentDate.sql");
+
+            if (conn.ConnectionString == "")
+            {
+                conn.ConnectionString = Variables.connString;
+            }
+
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+
+            OracleCommand cmdJournal = new OracleCommand();
+            cmdJournal.CommandText = topScript;
+            cmdJournal.Connection = conn;
+            cmdJournal.CommandType = CommandType.Text;
+
+            OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdJournal);
+
+            return cmdJournal.ExecuteScalar().ToString();
+        }
+
+        private Int32 GetBookCount()
+        {
+            string topScript = File.ReadAllText("../../Scripts/BookCounter.sql");
+
+            if (conn.ConnectionString == "")
+            {
+                conn.ConnectionString = Variables.connString;
+            }
+
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+
+            OracleCommand cmdJournal = new OracleCommand();
+            cmdJournal.CommandText = topScript;
+            cmdJournal.Connection = conn;
+            cmdJournal.CommandType = CommandType.Text;
+
+            OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdJournal);
+
+            return Int32.Parse(cmdJournal.ExecuteScalar().ToString());
         }
     }
 }

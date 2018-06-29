@@ -425,6 +425,7 @@
             this.DateBeg_textBox.Name = "DateBeg_textBox";
             this.DateBeg_textBox.Size = new System.Drawing.Size(93, 26);
             this.DateBeg_textBox.TabIndex = 45;
+            this.DateBeg_textBox.TextChanged += new System.EventHandler(this.DateBeg_textBox_TextChanged);
             // 
             // DateEnd_textBox
             // 

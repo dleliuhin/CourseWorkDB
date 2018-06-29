@@ -177,6 +177,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Scripts\GetFine.sql" />
+    <None Include="Scripts\DateEnding.sql" />
+    <None Include="Scripts\CurrentDate.sql" />
     <None Include="Scripts\SpecificFine.sql" />
     <None Include="Scripts\BookCounter.sql" />
     <None Include="Scripts\MaxFine.sql" />

@@ -339,6 +339,7 @@
             this.UpdateJournal_button.TabIndex = 9;
             this.UpdateJournal_button.Text = "Обновить";
             this.UpdateJournal_button.UseVisualStyleBackColor = true;
+            this.UpdateJournal_button.Click += new System.EventHandler(this.UpdateJournal_button_Click);
             // 
             // label2
             // 
@@ -358,6 +359,7 @@
             this.DelJournal_button.TabIndex = 39;
             this.DelJournal_button.Text = "Удалить";
             this.DelJournal_button.UseVisualStyleBackColor = true;
+            this.DelJournal_button.Click += new System.EventHandler(this.DelJournal_button_Click);
             // 
             // ClrJournal_button
             // 
@@ -390,6 +392,7 @@
             this.AddJournal_button.TabIndex = 40;
             this.AddJournal_button.Text = "Добавить";
             this.AddJournal_button.UseVisualStyleBackColor = true;
+            this.AddJournal_button.Click += new System.EventHandler(this.AddJournal_button_Click);
             // 
             // IDjour_textBox
             // 

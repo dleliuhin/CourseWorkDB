@@ -1,0 +1,4 @@
+SELECT TO_CHAR
+    (SYSDATE, 'DD.MM.YY')
+    "NOW"
+     FROM DUAL

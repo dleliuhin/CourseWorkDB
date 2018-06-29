@@ -126,6 +126,13 @@ namespace LibraryProject
         private void ClrJournal_button_Click(object sender, EventArgs e)
         {
             dgvWork.DataSource = null;
+
+            IDjour_textBox.Text = null;
+            BookIDjour_textBox.Text = null;
+            ClientIDjour_textBox.Text = null;
+            DateBeg_textBox.Text = null;
+            DateEnd_textBox.Text = null;
+            DateRet_textBox.Text = null;
         }
 
         private void ListJoural_button_Click(object sender, EventArgs e)
@@ -249,6 +256,102 @@ namespace LibraryProject
         {
             ClientIDCount_textBox.Text = null;
             ClientIDFine_textBox.Text = null;
+        }
+
+        private void AddJournal_button_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(IDjour_textBox.Text) || String.IsNullOrEmpty(BookIDjour_textBox.Text) ||
+                String.IsNullOrEmpty(ClientIDjour_textBox.Text) || String.IsNullOrEmpty(DateBeg_textBox.Text))
+            {
+                MessageBox.Show("Пожалуйста введите все основные данные журнала.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                String sql = "INSERT INTO JOURNAL (ID,BOOK_ID,CLIENT_ID,DATE_BEG) VALUES(:ID,:BOOK_ID,:CLIENT_ID,:DATE_BEG)";
+                AUD_Book(sql, 0);
+            }
+        }
+
+        private void DelJournal_button_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(IDjour_textBox.Text) || String.IsNullOrEmpty(BookIDjour_textBox.Text) ||
+                String.IsNullOrEmpty(ClientIDjour_textBox.Text) || String.IsNullOrEmpty(DateBeg_textBox.Text))
+            {
+                MessageBox.Show("Пожалуйста введите все основные данные журнала.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                String sql = "DELETE FROM JOURNAL WHERE ID = :ID";
+                AUD_Book(sql, 2);
+            }
+        }
+
+        private void UpdateJournal_button_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(IDjour_textBox.Text) || String.IsNullOrEmpty(BookIDjour_textBox.Text) ||
+                String.IsNullOrEmpty(ClientIDjour_textBox.Text) || String.IsNullOrEmpty(DateBeg_textBox.Text))
+            {
+                MessageBox.Show("Пожалуйста введите все основные данные журнала.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                String sql = "UPDATE JOURNAL SET BOOK_ID = :BOOK_ID, CLIENT_ID = :CLIENT_ID, DATE_BEG = :DATE_BEG, DATE_END = :DATE_END, DATE_RET = :DATE_RET, WHERE ID = :ID ";
+                AUD_Book(sql, 1);
+            }
+        }
+
+        private void AUD_Book(string sql, int state)
+        {
+            if (conn.State == ConnectionState.Closed)
+                conn.Open();
+
+            OracleCommand cmdJournal = conn.CreateCommand();
+
+            cmdJournal.CommandText = sql;
+            cmdJournal.CommandType = CommandType.Text;
+
+            switch (state)
+            {
+                case 0:
+                    //Insert new client
+                    cmdJournal.Parameters.Add("ID", OracleDbType.Int32, 6).Value = Int32.Parse(IDjour_textBox.Text);
+                    cmdJournal.Parameters.Add("BOOK_ID", OracleDbType.Int32, 6).Value = Int32.Parse(BookIDjour_textBox.Text);
+                    cmdJournal.Parameters.Add("CLIENT_ID", OracleDbType.Int32, 6).Value = Int32.Parse(ClientIDjour_textBox.Text);
+                    cmdJournal.Parameters.Add("DATE_BEG", OracleDbType.TimeStamp, 3).Value = DateBeg_textBox.Text;
+                    break;
+                    
+                case 1:
+                    //Update clients
+                    cmdJournal.Parameters.Add("ID", OracleDbType.Int32, 6).Value = Int32.Parse(IDjour_textBox.Text);
+                    cmdJournal.Parameters.Add("BOOK_ID", OracleDbType.Int32, 6).Value = Int32.Parse(BookIDjour_textBox.Text);
+                    cmdJournal.Parameters.Add("CLIENT_ID", OracleDbType.Int32, 6).Value = Int32.Parse(ClientIDjour_textBox.Text);
+                    cmdJournal.Parameters.Add("DATE_BEG", OracleDbType.TimeStamp, 3).Value = DateBeg_textBox.Text;
+                    cmdJournal.Parameters.Add("DATE_END", OracleDbType.TimeStamp, 3).Value = DateEnd_textBox.Text;
+                    cmdJournal.Parameters.Add("DATE_RET", OracleDbType.TimeStamp, 3).Value = DateRet_textBox.Text;
+                    break;
+
+                case 2:
+                    //Delete specific client
+                    cmdJournal.Parameters.Add("ID", OracleDbType.Int32, 6).Value = Int32.Parse(IDjour_textBox.Text);
+                    break;
+
+            }
+            try
+            {
+                int n = cmdJournal.ExecuteNonQuery();
+                if (n > 0)
+                {
+                    OracleCommand cmdJournal1 = new OracleCommand();
+                    cmdJournal1.CommandText = "SELECT * FROM JOURNAL";
+                    cmdJournal1.Connection = conn;
+                    cmdJournal1.CommandType = CommandType.Text;
+                    OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdJournal1);
+                    DataTable dtJournal = new DataTable();
+                    adapterJournal.Fill(dtJournal);
+                    dgvWork.DataSource = dtJournal;
+                }
+            }
+            catch (Exception exep) { };
         }
     }
 }

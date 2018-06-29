@@ -260,7 +260,7 @@
             this.BigFine_groupBox.Controls.Add(this.BigFineClear_button);
             this.BigFine_groupBox.Controls.Add(this.Maxfine_textBox);
             this.BigFine_groupBox.Controls.Add(this.BigFine_button);
-            this.BigFine_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.20472F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BigFine_groupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.070867F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BigFine_groupBox.Location = new System.Drawing.Point(851, 261);
             this.BigFine_groupBox.Name = "BigFine_groupBox";
             this.BigFine_groupBox.Size = new System.Drawing.Size(233, 101);
@@ -283,7 +283,7 @@
             // 
             this.Maxfine_textBox.Location = new System.Drawing.Point(134, 45);
             this.Maxfine_textBox.Name = "Maxfine_textBox";
-            this.Maxfine_textBox.Size = new System.Drawing.Size(89, 28);
+            this.Maxfine_textBox.Size = new System.Drawing.Size(89, 26);
             this.Maxfine_textBox.TabIndex = 11;
             // 
             // BigFine_button

@@ -234,7 +234,7 @@ namespace LibraryProject
 
                 cmdJournal.Parameters.Add("CLIENT_ID ", OracleDbType.Int32, 6).Value = Int32.Parse(ClientID_textBox.Text);
 
-                ClientIDFine_textBox.Text = (Int32)cmdJournal.ExecuteScalar().ToString();
+                ClientIDFine_textBox.Text = cmdJournal.ExecuteScalar().ToString();
             }
         }
 

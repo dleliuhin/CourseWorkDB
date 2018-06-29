@@ -378,7 +378,7 @@ namespace LibraryProject
                 cmdJournal.Connection = conn;
                 cmdJournal.CommandType = CommandType.Text;
 
-                cmdJournal.Parameters.Add("D", OracleDbType.Int32, 6).Value = GetBookCount();
+                cmdJournal.Parameters.Add("D", OracleDbType.Int32, 6).Value = Int32.Parse(GetBookCount());
 
                 OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdJournal);
 
@@ -408,10 +408,10 @@ namespace LibraryProject
             return cmdJournal.ExecuteScalar().ToString();
         }
 
-        private Int32 GetBookCount()
+        private string GetBookCount()
         {
             string topScript = File.ReadAllText("../../Scripts/BookCounter.sql");
-            Int32 resBookCnt;
+            string resBookCnt;
 
             if (conn.ConnectionString == "")
             {
@@ -430,11 +430,11 @@ namespace LibraryProject
 
             OracleDataAdapter adapterJournal = new OracleDataAdapter(cmdJournal);
 
-            resBookCnt = Int32.Parse(cmdJournal.ExecuteScalar().ToString());
+            resBookCnt = cmdJournal.ExecuteScalar().ToString();
 
-            if (resBookCnt.ToString() == null || resBookCnt.ToString() == "")
+            if (resBookCnt == null || resBookCnt == "")
             {
-                resBookCnt = 0;
+                resBookCnt = "0";
             }
 
             return resBookCnt;
